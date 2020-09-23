@@ -20,19 +20,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding-top: 2%;
+  font-size: 40px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.list {
+  background-color: rgb(8, 1, 1);
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 50%;
+  /* display: flex;
+  flex-direction: row; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.details {
+  background-color: rgb(8, 1, 1);
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: normal;
 }
