@@ -38,9 +38,9 @@ function App() {
               {expand === true && index === data.fid ?
                 <div className="details">
                   <div style={{
-                    backgroundColor: "#cfbe9f",
+                    backgroundColor: "#f2f1da",
                     padding: "10px",
-                    color: "#805d17",
+                    color: "#d16a04",
                     borderRadius: "8px",
                     display: "flex",
                     flexDirection: "row",
@@ -50,10 +50,10 @@ function App() {
                     {data.kasusPosi.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} <div style={{fontSize: "20px"}}>Positif</div>
                   </div>
                   <div style={{
-                    backgroundColor: "#c1e6c1",
+                    backgroundColor: "#d5edd5",
                     marginTop: "10px",
                     padding: "10px",
-                    color: "#128210",
+                    color: "#086b06",
                     borderRadius: "8px",
                     display: "flex",
                     flexDirection: "row",
@@ -63,7 +63,7 @@ function App() {
                     {data.kasusSemb.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} <div style={{fontSize: "20px"}}>Sembuh</div>
                   </div>
                   <div style={{
-                    backgroundColor: "#d4a7a7",
+                    backgroundColor: "#f5dada",
                     marginTop: "10px",
                     padding: "10px",
                     color: "#f00",
