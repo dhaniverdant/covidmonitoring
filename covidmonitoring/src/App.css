@@ -105,6 +105,11 @@
   height: 4%;
 }
 
+.footer-link {
+  margin-left: 3px;
+  text-decoration:none;
+}
+
 @media (max-width: 768px) {
   .select {
     width: 95%;
