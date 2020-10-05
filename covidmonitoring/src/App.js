@@ -1,86 +1,83 @@
 import React, { useState, useEffect } from 'react';
+import Select from 'react-select'
+import axios from 'axios'
 import './App.css';
 
 function App() {
-  const [data, setData] = useState([]);
-  const [expand, setExpand] = useState(false);
-  const [index, setIndex] = useState("");
+  // const [data, setData] = useState([]);
+  const [selectOptions, setSelectOptions] = useState([]);
+  const [provinsi, setProvinsi] = useState("");
+  const [positif, setPositif] = useState("");
+  const [sembuh, setSembuh] = useState("");
+  const [meninggal, setMeninggal] = useState("");
 
   useEffect(() => {
-    async function fetchData() {
-      const result = await fetch("https://indonesia-covid-19.mathdro.id/api/provinsi/");
-      result
-        .json()
-        .then(result => setData(result));
+    // async function fetchData() {
+    //   const result = await fetch("https://indonesia-covid-19.mathdro.id/api/provinsi/");
+    //   result
+    //     .json()
+    //     .then(result => setData(result));
+    // }
+    async function getOptions(){
+      const result = await axios.get('https://indonesia-covid-19.mathdro.id/api/provinsi/')
+      const data = result.data
+  
+      const options = data.data && data.data.filter(function(d) {
+        if (d.provinsi === "Indonesia") {
+          return false;
+        }
+        return true;
+      }).map(d => ({
+        "value" : d.kasusPosi,
+        "value2" : d.kasusSemb,
+        "value3" : d.kasusMeni,
+        "label" : d.provinsi
+      }))
+  
+      setSelectOptions(options);
     }
 
-    fetchData();
+    getOptions();
   });
 
-  const onListClick = fid => {
-    setExpand(!expand);
-    setIndex(fid);
+  const handleChange = (e) => {
+    setProvinsi(e.label);
+    setPositif(e.value);
+    setSembuh(e.value2);
+    setMeninggal(e.value3);
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div style={{top: 0, bottom: "20px", position: "sticky", width: "100%", backgroundColor: "#f0000f"}}>Covid-19 Update</div>
-        {data.data &&
-        data.data.map(data => (
-          <div
-            key={data.fid}
-            className="list"
-            onClick={() => onListClick(data.fid)}
-          >
-            <div style={{color: "#fff"}}>
-              {data.provinsi}
-              {expand === true && index === data.fid ?
-                <div className="details">
-                  <div style={{
-                    backgroundColor: "#f2f1da",
-                    padding: "10px",
-                    color: "#d16a04",
-                    borderRadius: "8px",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "flex-end",
-                    justifyContent: "space-between"
-                  }}>
-                    {data.kasusPosi.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} <div style={{fontSize: "20px"}}>Positif</div>
-                  </div>
-                  <div style={{
-                    backgroundColor: "#d5edd5",
-                    marginTop: "10px",
-                    padding: "10px",
-                    color: "#086b06",
-                    borderRadius: "8px",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "flex-end",
-                    justifyContent: "space-between"
-                  }}>
-                    {data.kasusSemb.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} <div style={{fontSize: "20px"}}>Sembuh</div>
-                  </div>
-                  <div style={{
-                    backgroundColor: "#f5dada",
-                    marginTop: "10px",
-                    padding: "10px",
-                    color: "#f00",
-                    borderRadius: "8px",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "flex-end",
-                    justifyContent: "space-between"
-                  }}>
-                    {data.kasusMeni.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} <div style={{fontSize: "20px"}}>Meninggal</div>
-                  </div>
+    <div>
+      <div className="header-title">Data Covid-19 Indonesia</div>
+      <div className="content-wrapper">
+        <div className="select">
+          <Select options={selectOptions} onChange={handleChange} placeholder="Pilih Provinsi" />
+          {provinsi === ""
+          ? (<div className="select-content-wrapper">
+              <div className="null-text-wrapper">Pilih Provinsi Untuk Menampilkan Data</div>
+            </div>)
+          : (<div className="select-content-wrapper">
+              <div className="data-wrapper">
+                <div>Menampilkan Data Untuk Provinsi</div>
+                <div className="province-name">{provinsi}</div>
+                <div className="positive-box">
+                  <div className="data-number">{positif.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                  <div>Positif</div>
                 </div>
-              : ""}
-            </div>
-          </div>
-        ))}
-      </header>
+                <div className="sembuh-box">
+                  <div className="data-number">{sembuh.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                  <div>Sembuh</div>
+                </div>
+                <div className="meninggal-box">
+                  <div className="data-number">{meninggal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                  <div>Meninggal</div>
+                </div>
+              </div>
+            </div>)}
+        </div>
+      </div>
+      <div className="footer">Copyright {'\u00A9'} 2020 <a style={{marginLeft: "3px", textDecoration:"none"}} href="https://www.linkedin.com/in/rahmad-ramdhani-a08102131/">Rahmad Ramdhani</a></div>
     </div>
   );
 }
