@@ -102,7 +102,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 4%;
+  height: 5%;
 }
 
 .footer-link {
@@ -111,17 +111,77 @@
 }
 
 @media (max-width: 768px) {
+  .header-title {
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    height: 50px;
+    margin-bottom: 20px;
+    position: sticky;
+    width: 100%;
+    color: #fff;
+    background-color: #f0000f;
+  }
+
   .select {
     width: 95%;
   }
 
   .data-wrapper {
-    padding-top: 50px;
+    padding-top: 20px;
     width: 95%;
   }
 
   .province-name {
     font-size: 22px;
     font-weight: bold;
+  }
+
+  .positive-box {
+    height: 100px;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+    background-color: #d2e0f7;
+    color: #00f;
+    border: solid 1px #00f;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .sembuh-box {
+    height: 100px;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+    background-color: #dcfae1;
+    color: #086115;
+    border: solid 1px #086115;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .meninggal-box {
+    height: 100px;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+    background-color: #fae1e1;
+    color: #f01a1a;
+    border: solid 1px #f01a1a;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
   }
 }
