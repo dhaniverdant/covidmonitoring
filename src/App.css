@@ -1,4 +1,15 @@
+.normal {
+  min-height: 100vh;
+  background-color: white;
+}
+
+.dark {
+  min-height: 100vh;
+  background-color: black;
+}
+
 .header-title {
+  z-index: 10;
   top: 0;
   display: flex;
   flex-direction: column;
@@ -28,9 +39,22 @@
   padding-top: 50px;
 }
 
+.null-text-wrapper-dark {
+  padding-top: 50px;
+  color: aliceblue;
+}
+
+.top-text-dark { color: aliceblue; }
+
 .province-name {
   font-size: 32px;
   font-weight: bold;
+}
+
+.province-name-dark {
+  font-size: 32px;
+  font-weight: bold;
+  color: aliceblue;
 }
 
 .select {
@@ -92,6 +116,30 @@
   margin-top: 10px;
 }
 
+.dirawat-box {
+  height: 120px;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: space-between;
+  background-color: #f8fae1;
+  color: #a18507;
+  border: solid 1px #a18507;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.last-update {
+  margin-top: 10px;
+}
+
+.last-update-dark {
+  margin-top: 10px;
+  color: aliceblue;
+}
+
 .footer {
   position: fixed;
   left: 0;
@@ -112,6 +160,7 @@
 
 @media (max-width: 768px) {
   .header-title {
+    z-index: 10;
     top: 0;
     display: flex;
     flex-direction: column;
@@ -138,6 +187,12 @@
   .province-name {
     font-size: 22px;
     font-weight: bold;
+  }
+
+  .province-name-dark {
+    font-size: 22px;
+    font-weight: bold;
+    color: aliceblue;
   }
 
   .positive-box {
@@ -179,6 +234,21 @@
     background-color: #fae1e1;
     color: #f01a1a;
     border: solid 1px #f01a1a;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .dirawat-box {
+    height: 100px;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+    background-color: #f8fae1;
+    color: #a18507;
+    border: solid 1px #a18507;
     display: flex;
     flex-direction: row;
     align-items: center;
