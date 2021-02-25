@@ -133,10 +133,12 @@
 
 .last-update {
   margin-top: 10px;
+  margin-bottom: 20vh;
 }
 
 .last-update-dark {
   margin-top: 10px;
+  margin-bottom: 20vh;
   color: aliceblue;
 }
 
